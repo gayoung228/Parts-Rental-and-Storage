@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f7fb">
+  <title>공구 보관함 · 관리자</title>
+  <link id="dashboard-styles" rel="stylesheet" href="/dashboard.css?v=2">
+  <script src="/dashboard.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="/" aria-label="공구 보관함 홈"><span class="brand-icon">▦</span><span>공구 보관함<small>관리자 조회</small></span></a>
+    <div class="nav-label">관리 메뉴</div>
+    <nav aria-label="조회 메뉴">
+      <button class="nav-button active" data-tab="households" aria-pressed="true"><span>▤</span>세대별 현황</button>
+      <button class="nav-button" data-tab="tools" aria-pressed="false"><span>◇</span>공구 상태</button>
+      <button class="nav-button" data-tab="loans" aria-pressed="false"><span>↔</span>대여·반납 이력</button>
+    </nav>
+    <div class="sidebar-foot"><span class="live-dot"></span>관리자 화면<small>조회 전용 · 한국 시간 기준</small></div>
+  </aside>
+  <main>
+    <header class="topbar"><span class="breadcrumb">공유 공구 관리 <span>/</span> <span id="breadcrumb">세대별 현황</span></span><span class="test-badge" id="test-badge">대여 정책 확인 중</span></header>
+    <section class="page-heading"><div><p class="eyebrow">공유 공구 관리</p><h1 id="page-title">세대별 대여 현황</h1><p id="page-description">세대별 이용 현황과 청구 금액을 확인하세요.</p></div><button class="refresh-button" id="refresh"><span>↻</span> 새로고침</button></section>
+    <div class="sync-bar"><span id="connection" role="status"><span class="status-dot waiting"></span>DB 연결 중</span><span id="updated">첫 조회를 기다리고 있습니다</span><label class="auto-refresh"><input id="auto-refresh" type="checkbox" checked> 자동 갱신</label></div>
+    <div id="error" class="error-banner" role="alert" hidden></div>
+    <section class="metrics" aria-label="전체 현황">
+      <article class="metric"><span class="metric-label">등록 세대 <span class="metric-symbol">▤</span></span><strong id="metric-households">—</strong><small>대여 여부와 관계없이 모든 세대</small></article>
+      <article class="metric"><span class="metric-label">대여 중인 공구 <span class="metric-symbol">◇</span></span><strong id="metric-open">—</strong><small id="metric-available">공구 상태 확인 중</small></article>
+      <article class="metric"><span class="metric-label">연체 중인 공구 <span class="metric-symbol orange">◷</span></span><strong id="metric-overdue">—</strong><small>아직 반납되지 않은 공구 기준</small></article>
+      <article class="metric money"><span class="metric-label">전체 청구 예정 금액 <span class="metric-symbol">₩</span></span><strong id="metric-amount">—</strong><small>반납 후 발생한 요금도 포함</small></article>
+    </section>
+    <section class="workspace">
+      <div class="table-card">
+        <div class="card-heading"><div><h2 id="table-title">세대별 현황</h2><p id="table-subtitle">세대를 선택하면 대여 이력을 확인할 수 있습니다.</p></div><span class="count-badge" id="row-count">—</span></div>
+        <div class="filters" id="summary-filters"><label class="search"><span>⌕</span><input id="search" type="search" placeholder="동 또는 호수 검색" aria-label="세대 또는 공구 검색"></label><label class="check-filter"><input id="open-only" type="checkbox"> 대여 중만 보기</label></div>
+        <div class="filters loan-filters" id="loan-filters" hidden>
+          <label>세대<select id="household-filter"><option value="0">전체 세대</option></select></label>
+          <label>공구<select id="tool-filter"><option value="0">전체 공구</option></select></label>
+          <label>상태<select id="state-filter"><option value="0">전체 상태</option><option value="1">대여 중</option><option value="2">반납 완료</option><option value="3">연체 중</option></select></label>
+          <button class="reset-button" id="reset-filters">필터 초기화</button>
+        </div>
+        <div class="table-scroll"><table><thead id="table-head"></thead><tbody id="table-body"><tr><td class="empty">DB 정보를 불러오고 있습니다.</td></tr></tbody></table></div>
+        <div class="pagination" id="pagination" hidden><span id="page-info"></span><div><button id="previous-page" aria-label="이전 페이지">← 이전</button><button id="next-page" aria-label="다음 페이지">다음 →</button></div></div>
+        <div class="table-foot" id="table-note">미반납 개수는 현재 대여 중인 공구만 집계합니다.</div>
+      </div>
+      <aside class="context-card">
+        <div class="policy-heading"><span class="context-icon">◷</span><h2>현재 대여 정책</h2></div>
+        <dl><div><dt>대여 시간</dt><dd id="policy-duration">—</dd></div><div><dt>공구 1개 대여료</dt><dd id="policy-fee">—</dd></div><div><dt>연체료</dt><dd id="policy-late">—</dd></div></dl>
+        <p class="policy-note" id="policy-note">현재 DB에 저장된 대여 정책을 표시합니다.</p>
+        <details class="explanation"><summary>반납 후 요금이 남는 이유</summary><p>반납은 대여 상태를 해제합니다. 이미 발생한 대여료와 연체료는 청구 예정 금액에 남습니다.</p><p>월별 청구로 이전한 금액은 여기서 제외됩니다.</p></details>
+      </aside>
+    </section>
+    <footer>공구 보관함 관리자 · 날짜와 시각은 한국 시간 기준입니다.</footer>
+  </main>
+</body>
+</html>
