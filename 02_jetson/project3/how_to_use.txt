@@ -1,0 +1,4 @@
+실행방법
+cd
+. project3venv
+python3 iot_camera_client.py --host 10.10.16.80 --locker LOCKER_101 --camera 0

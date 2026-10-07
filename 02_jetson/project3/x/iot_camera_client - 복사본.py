@@ -108,8 +108,7 @@ class CameraConnection:
                 print(f'[SESSION] {value if value else "CLOSED - waiting for approved card"}', flush=True)
         elif len(fields) == 3 and fields[0] == 'DETECT':
             with self.lock:
-                if self.pending and self.pending['event'] == fields[1] and fields[2] in (
-                        'SAVED', 'RENTED', 'RETURNED', 'BUSY', 'UNCHANGED', 'REJECTED', 'ERROR'):
+                if self.pending and self.pending['event'] == fields[1] and fields[2] in ('SAVED', 'REJECTED', 'ERROR'):
                     print(f'[DETECT] event={fields[1]} result={fields[2]}', flush=True)
                     self.pending = None
 
