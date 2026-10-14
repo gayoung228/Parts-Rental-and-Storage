@@ -119,6 +119,9 @@ STM32 펌웨어는 STM32CubeIDE/CMake 프로젝트로 구성되어 있습니다.
 ## 실제 구현 하드웨어
 <img width="1669" height="1233" alt="ddd" src="https://github.com/user-attachments/assets/8d99e637-d226-472b-a49e-3559d8f2ae40" />
 
+<img width="1992" height="1240" alt="image" src="https://github.com/user-attachments/assets/15a3d709-26f3-40d6-9337-9412b6504c08" />
+
+
 ## 관리자 웹 페이지
 
 ### 공구 대여
