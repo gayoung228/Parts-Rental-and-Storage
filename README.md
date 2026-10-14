@@ -4,6 +4,15 @@
 
 > 현재 구현은 동작을 확인한 시제품입니다. 실제 운영 환경에 적용하기 전에는 하드웨어 내구성, 보안, 카메라 인식 성능을 추가 검증해야 합니다.
 
+### 시스템 안내도
+<img width="1672" height="941" alt="한국 아파트 공구 대여 시스템 안내도" src="https://github.com/user-attachments/assets/dc612d15-46c2-493c-ad9a-6892a8c6dfe9" />
+
+### 작동 플로우차트
+<img width="1288" height="838" alt="작동 플로우 차트" src="https://github.com/user-attachments/assets/5e85534a-c827-4741-9045-1e73b7d2ebba" />
+
+
+
+
 ## 기술 스택
 
 ![STM32](https://img.shields.io/badge/STM32-F411RE-03234B?style=for-the-badge&logo=stmicroelectronics&logoColor=white)
@@ -106,6 +115,21 @@ docs/                  장치 연결, DB 설정, 실행 및 시험 안내
 - [보관함 부저](docs/tool-buzzer.md)
 
 STM32 펌웨어는 STM32CubeIDE/CMake 프로젝트로 구성되어 있습니다. 로컬 빌드 산출물과 시험 파일은 저장소의 `build/` 및 `tools/`에서 확인할 수 있습니다. 장치별 실제 연결 전에 각 안내 문서의 전압, 핀 배치, 네트워크 주소와 DB 환경 설정을 확인하세요.
+
+## 실제 구현 하드웨어
+<img width="1669" height="1233" alt="ddd" src="https://github.com/user-attachments/assets/8d99e637-d226-472b-a49e-3559d8f2ae40" />
+
+## 관리자 웹 페이지
+
+### 공구 대여
+<img width="2176" height="1270" alt="공구 대여 이미지" src="https://github.com/user-attachments/assets/e838ae4f-7275-43a8-afef-8c51748d1767" />
+
+### 공구 반납
+<img width="2190" height="1267" alt="공구 반납 이미지" src="https://github.com/user-attachments/assets/f1d820bf-254f-468a-a047-f250a76017d2" />
+
+### 공구 연체
+<img width="2170" height="1270" alt="공구 연체 이미지" src="https://github.com/user-attachments/assets/1fb61891-e1ce-4eae-beeb-f45b3b2255ff" />
+
 
 ## 한계 및 향후 개선
 
